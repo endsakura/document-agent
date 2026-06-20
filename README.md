@@ -34,25 +34,7 @@ python main.py
 
 `best.pt` **不会**包含在本仓库中。使用者需自行放置模型文件，详见 [models/README.md](models/README.md)。
 
-## 上传到 GitHub
 
-```powershell
-cd D:\imageclassifationagent
-
-# 初始化（只需一次）
-git init
-git add .
-git status          # 确认没有 best.pt、.env、uploads/
-
-git commit -m "Initial commit: Document Agent"
-git branch -M main
-
-# 在 github.com 新建空仓库后：
-git remote add origin https://github.com/你的用户名/仓库名.git
-git push -u origin main
-```
-
-推送前务必检查 `git status`，确保 **best.pt / .env / uploads / chroma_db** 不在列表中。
 
 ## 项目结构
 
