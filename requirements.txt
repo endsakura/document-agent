@@ -1,0 +1,24 @@
+# Web（fastapi / starlette 必须版本匹配，否则会报 on_startup 错误）
+fastapi>=0.115.0,<0.116.0
+starlette>=0.40.0,<0.46.0
+uvicorn[standard]>=0.30.0
+python-multipart>=0.0.9
+python-dotenv>=1.0.0
+
+# Agent
+langchain>=0.1.0
+langchain-openai>=0.1.0
+openai>=1.0.0
+
+# MCP
+mcp>=1.0.0
+
+# OCR / Vision
+paddleocr>=2.7.0
+paddlepaddle>=2.6.0
+PyMuPDF>=1.23.0
+opencv-python>=4.8.0
+ultralytics>=8.0.0
+
+# Memory
+chromadb>=0.4.0

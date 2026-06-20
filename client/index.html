@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DocAgent</title>
+  <link rel="stylesheet" href="/client/style.css" />
+</head>
+<body>
+  <div class="app">
+    <!-- 左侧窄栏（类似 ChatGPT） -->
+    <aside class="sidebar" id="sidebar">
+      <button type="button" class="sidebar-new" id="newChatBtn">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+        新对话
+      </button>
+      <div class="sidebar-footer">
+        <span class="status-dot" id="statusDot"></span>
+        <span id="statusText">连接中</span>
+      </div>
+    </aside>
+
+    <!-- 主对话区 -->
+    <main class="chat-main">
+      <header class="chat-header">
+        <button type="button" class="menu-btn" id="menuBtn" aria-label="菜单">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M4 7h16M4 12h16M4 17h10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+        </button>
+        <span class="chat-title">DocAgent</span>
+      </header>
+
+      <div class="chat-scroll" id="chatScroll">
+        <!-- 空状态：居中欢迎 -->
+        <div class="empty-state" id="emptyState">
+          <h1>有什么可以帮你的？</h1>
+          <div class="suggestions">
+            <button type="button" class="suggestion" data-text="帮我识别并分析上传的文档">识别并分析文档</button>
+            <button type="button" class="suggestion" data-text="校验这份文件是否为法人身份证">校验法人身份证</button>
+            <button type="button" class="suggestion" data-text="知识库里有哪些已入库的文档？">查询知识库</button>
+            <button type="button" class="suggestion" data-text="提取文档中的关键信息并总结">提取关键信息</button>
+          </div>
+        </div>
+
+        <div class="messages" id="messages"></div>
+      </div>
+
+      <!-- 底部输入框 -->
+      <div class="input-area">
+        <div class="input-box" id="inputBox">
+          <input type="file" id="fileInput" hidden accept=".pdf,.jpg,.jpeg,.png,.bmp,.tiff,.webp" />
+
+          <div class="file-preview hidden" id="filePreview">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M14 2H8a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V8l-6-6Z" stroke="currentColor" stroke-width="1.5"/></svg>
+            <span id="fileName"></span>
+            <button type="button" class="file-remove" id="fileRemove" aria-label="移除">×</button>
+          </div>
+
+          <div class="input-row">
+            <button type="button" class="attach-btn" id="attachBtn" title="上传文件">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+            </button>
+            <textarea
+              id="input"
+              rows="1"
+              placeholder="发送消息…"
+              autofocus
+            ></textarea>
+            <button type="button" class="send-btn" id="sendBtn" disabled aria-label="发送">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M12 19V5M5 12l7-7 7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </button>
+          </div>
+        </div>
+        <p class="input-tip">DocAgent 可能会出错，重要信息请核实。</p>
+      </div>
+    </main>
+  </div>
+
+  <div class="overlay hidden" id="overlay"></div>
+  <script src="/client/app.js"></script>
+</body>
+</html>
